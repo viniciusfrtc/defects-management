@@ -1,6 +1,6 @@
 #!/bin/bash
-npm run create-db-test
-npm run sync-db-test
-npm run seed-db-test
+npm run create-db
+npm run sync-db
+npm run seed-db
 mocha --recursive \"./src/**/*.test.js\"
-npm run drop-db-test
+npm run drop-db
