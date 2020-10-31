@@ -3,12 +3,11 @@ module.exports = sequelize => {
 	const Defect = require('./defect')(sequelize)
 	const WorkerRegistry = require('./worker-registry')(sequelize)
 
-	Defect.belongsTo(Machine, {
-		foreignKey: 'machine_id',
-	})
-	WorkerRegistry.hasMany(Defect, {
-		foreignKey: 'personal_number',
-	})
+	Machine.hasMany(Defect)
+	Defect.belongsTo(Machine)
+
+	WorkerRegistry.hasMany(Defect)
+	Defect.belongsTo(WorkerRegistry)
 
 	return {
 		Machine,

@@ -6,8 +6,11 @@
 	"scripts": {
 		"start": "node ./src/index.js",
 		"create-db-dev": "NODE_ENV=dev npx sequelize-cli db:create",
-		"integration-tests": "NODE_ENV=test sh ./tests/run-integration-tests.sh",
+		"seed-db-dev": "NODE_ENV=dev npx sequelize-cli db:seed:all",
+		"unseed-db-dev": "NODE_ENV=dev npx sequelize-cli db:seed:undo",
+		"start-dev": "NODE_ENV=dev npx nodemon ./src/index.js",
 		"create-db-test": "NODE_ENV=test npx sequelize-cli db:create",
+		"integration-tests": "NODE_ENV=test sh ./tests/run-integration-tests.sh",
 		"drop-db-test": "NODE_ENV=test npx sequelize-cli db:drop"
 	},
 	"keywords": [],
@@ -27,6 +30,11 @@
 		"sequelize-cli": "^6.2.0"
 	},
 	"dependencies": {
+		"await-to-js": "^2.1.1",
+		"body-parser": "^1.19.0",
+		"express": "^4.17.1",
+		"lodash": "^4.17.20",
+		"moment-timezone": "^0.5.31",
 		"pg": "^8.4.2",
 		"pg-hstore": "^2.3.3",
 		"sequelize": "^6.3.5"

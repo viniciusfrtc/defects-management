@@ -18,5 +18,6 @@ module.exports = {
 		'object-curly-spacing': ['error', 'always'],
 		'require-await': 'error',
 		semi: [2, 'never'],
+		"eol-last": ["error", "always"],
 	},
 }

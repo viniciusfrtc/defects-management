@@ -1,8 +1,10 @@
 const { DataTypes } = require('sequelize')
+const momentTz = require('moment-timezone')
 
 module.exports = sequelize => sequelize.define('defect', {
-	personal_number: {
+	personalNumber: {
 		type: DataTypes.TEXT,
+		field: 'personal_number',
 	},
 	description: {
 		type: DataTypes.TEXT,
@@ -11,12 +13,27 @@ module.exports = sequelize => sequelize.define('defect', {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 	},
-	machine_id: {
-		type: DataTypes.INTEGER,
-		allowNull: false,
-	},
-	defect_time: {
+	defectTime: {
 		type: DataTypes.DATE,
 		allowNull: false,
+		field: 'defect_time',
+		get() {
+			return momentTz
+				.tz(new Date(this.getDataValue('defectTime')), 'Europe/Berlin')
+				.toISOString(true)
+		},
 	},
+	workerRegistryId: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+		field: 'worker_registry_id',
+	},
+	machineId: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+		field: 'machine_id',
+	},
+}, {
+	underscored: true,
+	timestamps: false,
 })

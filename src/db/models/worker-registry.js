@@ -1,11 +1,15 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = sequelize => sequelize.define('worker_registry', {
-	personal_number: {
+	personalNumber: {
 		type: DataTypes.TEXT,
-		primaryKey: true,
+		unique: true,
+		field: 'personal_number',
 	},
 	name: {
 		type: DataTypes.TEXT,
 	},
+}, {
+	underscored: true,
+	timestamps: false,
 })

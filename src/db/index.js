@@ -1,11 +1,11 @@
 const Sequelize = require('sequelize')
-const env = process.env.NODE_ENV || 'dev'
-const config = require('./../config/database')[env]
+const appConfig = require('../config')
+const dbConfig = require('./../config/database')[appConfig.env]
 const modelsFactory = require('./models')
 let models
 
 const connectToDatabase = async () => {
-	const { database, username, password, dialect } = config
+	const { database, username, password, dialect } = dbConfig
 	try {
 		const sequelize = new Sequelize(
 			database,
@@ -16,12 +16,13 @@ const connectToDatabase = async () => {
 				define: {
 					freezeTableName: true,
 				},
+				timezone: 'Europe/Berlin',
 			},
 		)
 		await sequelize.authenticate()
 		console.log('Successfully connected to database.')
 		models = modelsFactory(sequelize)
-		await sequelize.sync({ force: true })
+		await sequelize.sync({ force: appConfig.forceDbSync })
 		console.log('Models are loaded and synced successfully.')
 	} catch (error) {
 		console.error('Unable to connect to the database:', error)

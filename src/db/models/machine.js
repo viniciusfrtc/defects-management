@@ -1,12 +1,9 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = sequelize => sequelize.define('machine', {
-	machine_type: {
+	machineType: {
 		type: DataTypes.TEXT,
-	},
-	machine_id: {
-		type: DataTypes.INTEGER,
-		primaryKey: true,
+		field: 'machine_type',
 	},
 	shift: {
 		type: DataTypes.INTEGER,
@@ -15,13 +12,18 @@ module.exports = sequelize => sequelize.define('machine', {
 		type: DataTypes.INTEGER,
 		defaultValue: 3,
 	},
-	selected_orders: {
+	selectedOrders: {
 		type: DataTypes.ARRAY(DataTypes.TEXT),
+		field: 'selected_orders',
 	},
 	workplace: {
 		type: DataTypes.INTEGER,
 	},
-	parallel_orders: {
+	parallelOrders: {
 		type: DataTypes.BOOLEAN,
+		field: 'parallel_orders',
 	},
+}, {
+	underscored: true,
+	timestamps: false,
 })
