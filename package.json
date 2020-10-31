@@ -1,32 +1,34 @@
 {
-  "name": "defects-management",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "engines": {
-    "node": "^12"
-  },
-  "scripts": {
-    "start": "node ./src/index.js",
-    "test": "mocha --recursive \"./src/**/*.test.js\""
-  },
-  "keywords": [],
-  "author": {
-    "name": "Vinicius Fratucci",
-    "email": "viniciusfratucci@gmail.com"
-  },
-  "license": "ISC",
-  "devDependencies": {
-    "eslint": "^7.12.1",
-    "eslint-config-standard": "^15.0.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.2",
-    "mocha": "^8.2.0"
-  },
-  "dependencies": {
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
-  }
+	"name": "defects-management",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node ./src/index.js",
+		"create-db-dev": "NODE_ENV=dev npx sequelize-cli db:create",
+		"integration-tests": "NODE_ENV=test sh ./tests/run-integration-tests.sh",
+		"create-db-test": "NODE_ENV=test npx sequelize-cli db:create",
+		"drop-db-test": "NODE_ENV=test npx sequelize-cli db:drop"
+	},
+	"keywords": [],
+	"author": {
+		"name": "Vinicius Fratucci",
+		"email": "viniciusfratucci@gmail.com"
+	},
+	"license": "ISC",
+	"devDependencies": {
+		"eslint": "^7.12.1",
+		"eslint-config-standard": "^15.0.1",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-promise": "^4.2.1",
+		"eslint-plugin-standard": "^4.0.2",
+		"mocha": "^8.2.0",
+		"sequelize-cli": "^6.2.0"
+	},
+	"dependencies": {
+		"pg": "^8.4.2",
+		"pg-hstore": "^2.3.3",
+		"sequelize": "^6.3.5"
+	}
 }
