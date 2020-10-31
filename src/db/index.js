@@ -17,6 +17,7 @@ const connectToDatabase = async () => {
 					freezeTableName: true,
 				},
 				timezone: 'Europe/Berlin',
+				logging: false,
 			},
 		)
 		await sequelize.authenticate()

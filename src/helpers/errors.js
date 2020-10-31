@@ -3,23 +3,23 @@ const logger = require('./logger')
 const ERRORS_LIST = {
 	MACHINE_DOESNT_EXIST_ERROR: {
 		code: '400',
-		message: "Machine Id doesn't exist",
+		message: 'Machine Id doesn\'t exist',
 	},
 	PERSONAL_WORKER_DOESNT_EXIST_ERROR: {
 		code: '400',
-		message: "Personal worker doesn't exist",
+		message: 'Personal worker doesn\'t exist',
 	},
 	GET_DEFECTS_BY_MACHINE_ID_ERROR: {
 		code: '500',
-		message: "An error has occurred.",
+		message: 'An error has occurred',
 	},
 	SET_NEW_DEFECT_ERROR: {
 		code: '500',
-		message: "Failed to insert new defect.",
+		message: 'Failed to insert new defect',
 	},
 	GET_MOST_RECENT_DEFECT_ERROR: {
 		code: '500',
-		message: "An error has occurred.",
+		message: 'An error has occurred',
 	},
 	SET_MACHINE_STATUS_ERROR: machineId => ({
 		code: '500',
@@ -27,11 +27,11 @@ const ERRORS_LIST = {
 	}),
 	SET_DEFECT_STATUS_ERROR: {
 		code: '500',
-		message: "An error has occurred.",
+		message: 'An error has occurred',
 	},
 	GET_ALL_DEFECTS_ERROR: {
 		code: '500',
-		message: "An error has occurred.",
+		message: 'An error has occurred',
 	},
 }
 

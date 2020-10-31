@@ -8,10 +8,12 @@
 		"create-db-dev": "NODE_ENV=dev npx sequelize-cli db:create",
 		"seed-db-dev": "NODE_ENV=dev npx sequelize-cli db:seed:all",
 		"unseed-db-dev": "NODE_ENV=dev npx sequelize-cli db:seed:undo",
-		"start-dev": "NODE_ENV=dev npx nodemon ./src/index.js",
+		"start-dev": "NODE_ENV=dev nodemon ./src/index.js",
 		"create-db-test": "NODE_ENV=test npx sequelize-cli db:create",
-		"integration-tests": "NODE_ENV=test sh ./tests/run-integration-tests.sh",
-		"drop-db-test": "NODE_ENV=test npx sequelize-cli db:drop"
+		"sync-db-test": "NODE_ENV=test node ./src/tests/sync-db.js",
+		"seed-db-test": "NODE_ENV=test npx sequelize-cli db:seed:all",
+		"drop-db-test": "NODE_ENV=test npx sequelize-cli db:drop",
+		"integration-tests": "NODE_ENV=test sh ./src/tests/run-integration-tests.sh"
 	},
 	"keywords": [],
 	"author": {
@@ -26,8 +28,10 @@
 		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-promise": "^4.2.1",
 		"eslint-plugin-standard": "^4.0.2",
+		"expect": "^26.6.1",
 		"mocha": "^8.2.0",
-		"sequelize-cli": "^6.2.0"
+		"sequelize-cli": "^6.2.0",
+		"supertest": "^6.0.0"
 	},
 	"dependencies": {
 		"await-to-js": "^2.1.1",

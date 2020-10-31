@@ -44,7 +44,7 @@ module.exports = app => {
 		const [error, result] = await to(setDefectStatus(
 			req.params.machineId,
 			req.body.defectTime,
-			req.body.defectStatus,
+			req.body.status,
 		))
 		if (error) {
 			return next(error)
@@ -64,7 +64,7 @@ module.exports = app => {
 	app.use((error, req, res, next) => {
 		if (error) {
 			res.status(error.code).json({
-				erroror: {
+				error: {
 					code: error.code,
 					message: error.message,
 				},

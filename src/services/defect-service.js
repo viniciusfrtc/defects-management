@@ -88,8 +88,7 @@ const setDefectStatus = async (machineId, defectTime, status) => {
 		)
 		const { completed: statusCompleted } = invert(defectStatusMap)
 		let machineUpdate
-		console.log(updated)
-		if (updated && status === statusCompleted) {
+		if (updated && Number(status) === Number(statusCompleted)) {
 			const machineInfo = new MachineInfo()
 			machineUpdate = await machineInfo.setMachineStatus(machineId, 1)
 			if (machineUpdate.success) {
@@ -132,7 +131,11 @@ const getAllDefects = async () => {
 		)
 		return allDefects.reduce((acc, currentDefect) => {
 			const currentDefectName = defectStatusMap[currentDefect.status]
-			acc[currentDefectName] = currentDefect
+			if (acc[currentDefectName]) {
+				acc[currentDefectName].push(currentDefect)
+			} else {
+				acc[currentDefectName] = [currentDefect]
+			}
 			return acc
 		}, {})
 	} catch (error) {
