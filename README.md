@@ -1,5 +1,8 @@
 # Coding challenge: defects-management
 
+### Challenge description
+Implement the described functionality in defect.js and example-db.sql (in challenge-description/). Deadline was 72h, worked around 15h on it.
+
 ### Database assumptions
 
 - Skipped table **workplace** since it was missing on SQL example;
